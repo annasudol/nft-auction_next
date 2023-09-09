@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind + ThirdWeb + web3 + dapp + TypeScript Starter',
-  description: 'A starter for Next.js, Tailwind CSS, TypeScript and Thirdweb',
+  title: 'NFT auction',
+  description: 'NFT auction on Eth Goerli',
   url: 'https://web3-nextjs-tailwind-ts-starter.vercel.app/',
 };
