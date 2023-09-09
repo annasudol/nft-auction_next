@@ -11,20 +11,17 @@
 // }
 /* eslint-disable @next/next/no-img-element */
 
-import type { NextPage } from 'next';
-import { ChangeEvent, useState } from 'react';
-import Layout from '@/components/layout';
-import { Switch } from '@headlessui/react';
-import Link from 'next/link';
-// import { NftMeta, PinataRes } from '@_types/nft';
-import axios from 'axios';
 // import { useWeb3 } from '@providers/web3';
 // import { ethers } from 'ethers';
 // import { toast } from "react-toastify";
 // import { useNetwork } from '@hooks/web3';
-import { ExclamationIcon } from '@heroicons/react/solid';
 import { useAddress } from '@thirdweb-dev/react';
+// import { NftMeta, PinataRes } from '@_types/nft';
+import type { NextPage } from 'next';
+import { ChangeEvent, useState } from 'react';
+
 import ImageUpload from '@/components/ImageUpload';
+import Layout from '@/components/layout';
 
 const ALLOWED_FIELDS = ['name', 'description', 'image', 'attributes'];
 
@@ -48,16 +45,13 @@ const NftCreate: NextPage = () => {
     // return {signedData, account};
   };
 
-  const handleImage = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      console.error('Select a file');
+  const handleImage = async (file: File | null) => {
+    if (!file) {
       return;
     }
-
-    const file = e.target.files[0];
     const buffer = await file.arrayBuffer();
     const bytes = new Uint8Array(buffer);
-
+    console.log(bytes, 'bytes')
     // try {
     //   const {signedData, account} = await getSignedData();
     //   const promise = axios.post("/api/verify-image", {
@@ -165,10 +159,9 @@ const NftCreate: NextPage = () => {
   return (
     <Layout>
       <ImageUpload
-        id='nft_img'
         accept='image/png, image/gif, image/jpeg, .svg, image/png'
         imgSrc={imgSrc}
-        onChange={(e) => console.log(e)}
+        onChange={handleImage}
       />
     </Layout>
   );

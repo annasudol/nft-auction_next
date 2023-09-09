@@ -6,7 +6,6 @@ import { useCallback } from 'react';
 import type { ImageUploadProps } from './ImageUpload.types';
 
 const ImageUpload: FC<ImageUploadProps> = ({
-  id,
   accept,
   onChange,
   imgSrc,
