@@ -8,20 +8,19 @@ import Button from '@/components/Button';
 export interface InputMinMaxProps
   extends InputHTMLAttributes<HTMLInputElement> {
   handleChange: (value: number) => void;
-  label: string;
+  register: any,
+  name: string;
   isValid?: boolean;
-  register?: any;
 }
 
 const CounterInput: FC<InputMinMaxProps> = ({
-  name,
-  label,
-  register,
-  required,
   handleChange,
   isValid = true,
+  register,
+  name,
   ...props
 }) => {
+  console.log(props, 'props');
   return (
     <div className='my-2 flex w-36 items-center'>
       <Button
@@ -32,16 +31,11 @@ const CounterInput: FC<InputMinMaxProps> = ({
         -
       </Button>
       <input
-        id={label}
-        name={name}
-        type='number'
-        min={0}
-        className={clsx(s.input, 'border-x-0 px-4 h-10', {
+        className={clsx(s.input, 'h-10 border-x-0 px-4', {
           '': isValid,
           '': isValid,
         })}
-        {...(register ? { ...register(name, { required }) } : null)}
-        {...props}
+        { ...register(name)}
       />
       <Button
         additionalClasses='rounded-l-none h-10'
