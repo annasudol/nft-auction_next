@@ -1,15 +1,13 @@
-
-import { withIronSession } from "next-iron-session";
-
+import { withIronSession } from 'next-iron-session';
 
 export function withSession(handler: unknown) {
   return withIronSession(handler, {
     password: process.env.SECRET_COOKIE_PASSWORD as string,
-    cookieName: "nft-auth-session",
+    cookieName: 'nft-auth-session',
     cookieOptions: {
-      secure: process.env.NODE_ENV === "production" ? true : false
-    }
-  })
+      secure: process.env.NODE_ENV === 'production' ? true : false,
+    },
+  });
 }
 
 // export const addressCheckMiddleware = async (req: NextApiRequest & { session: Session }, res: NextApiResponse) => {
@@ -40,4 +38,3 @@ export function withSession(handler: unknown) {
 //     }
 //   })
 // }
-

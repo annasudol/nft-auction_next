@@ -5,12 +5,7 @@ import { useCallback } from 'react';
 
 import type { ImageUploadProps } from './ImageUpload.types';
 
-const ImageUpload: FC<ImageUploadProps> = ({
-  accept,
-  onChange,
-  imgSrc,
-}) => {
-
+const ImageUpload: FC<ImageUploadProps> = ({ accept, onChange, imgSrc }) => {
   const onImgRemove = () => {
     onChange(null);
   };
@@ -25,7 +20,6 @@ const ImageUpload: FC<ImageUploadProps> = ({
     },
     [onChange]
   );
-
 
   return (
     <div className='grid gap-y-1'>
@@ -78,11 +72,11 @@ const ImageUpload: FC<ImageUploadProps> = ({
                   <span>Upload a file</span>
                   <input
                     onChange={onImageUpload}
-                    id="file-upload"
-                      name="file-upload"
-                     type="file"
-                     accept={accept}
-                     className="sr-only"
+                    id='file-upload'
+                    name='file-upload'
+                    type='file'
+                    accept={accept}
+                    className='sr-only'
                   />
                 </label>
                 <p className='pl-1'>or drag and drop</p>

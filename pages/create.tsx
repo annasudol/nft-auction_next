@@ -51,7 +51,7 @@ const NftCreate: NextPage = () => {
     }
     const buffer = await file.arrayBuffer();
     const bytes = new Uint8Array(buffer);
-    console.log(bytes, 'bytes')
+    console.log(bytes, 'bytes');
     // try {
     //   const {signedData, account} = await getSignedData();
     //   const promise = axios.post("/api/verify-image", {
@@ -151,7 +151,7 @@ const NftCreate: NextPage = () => {
   if (!address) {
     return (
       <Layout>
-       <p>Connect wallet</p>
+        <p>Connect wallet</p>
       </Layout>
     );
   }
