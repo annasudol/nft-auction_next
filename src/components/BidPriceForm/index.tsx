@@ -20,7 +20,7 @@ const BidPriceForm: FC<{ defaultValue?: number }> = ({ defaultValue = 0 }) => {
       handleChangeValue(newValue > defaultValue ? newValue : defaultValue);
   };
   return (
-    <form>
+    <form className=''>
       <CounterInput
         handleChange={handleChangeValue}
         value={price}

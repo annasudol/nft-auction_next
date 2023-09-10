@@ -25,7 +25,13 @@ const CounterInput: FC<InputMinMaxProps> = ({
       >
         -
       </Button>
-      <input type='text' pattern='[0-9]*' value={value} {...props} className='h-10 border-l-0 border-r-0' />
+      <input
+        type='text'
+        pattern='[0-9]*'
+        value={value}
+        {...props}
+        className='h-10 border-l-0 border-r-0'
+      />
       <Button
         additionalClasses='rounded-l-none h-10'
         variant='light'

@@ -60,7 +60,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant === 'light' && [
               'bg-white text-gray-700',
               'border border-gray-700',
-              'active:bg-white/80 disabled:text-gray-400 disabled:border-gray-400',
+              'active:bg-white/80 disabled:border-gray-400 disabled:text-gray-400',
             ],
           ],
           'disabled:cursor-not-allowed',

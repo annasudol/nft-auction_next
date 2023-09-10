@@ -6,7 +6,9 @@ import NFTList from '@/components/NFTList';
 export default function HomePage() {
   return (
     <Layout>
-      <NFTList />
+      <div className='mx-auto max-w-7xl px-2 sm:px-12 lg:px-12'>
+        <NFTList />
+      </div>
     </Layout>
   );
 }

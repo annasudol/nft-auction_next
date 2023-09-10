@@ -16,8 +16,8 @@ const NFTList = () => {
       bids: [
         { address: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872', price: 11 },
       ],
-      startDate: new Date('2/20/2023').toDateString(),
-      duration: 10,
+      startDate: new Date('2023-09-10').toDateString(),
+      duration: 15,
     },
     {
       meta: {
@@ -31,12 +31,12 @@ const NFTList = () => {
       bids: [
         { address: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872', price: 2 },
       ],
-      startDate: new Date('2/20/2023').toDateString(),
+      startDate: new Date('2023-09-09').toDateString(),
       duration: 10,
     },
   ];
   return (
-    <div className='my-4'>
+    <div className='my-4 max-w-2xl'>
       {list.map((nftItem) => (
         <NFTItem info={nftItem} key={nftItem.tokenId} />
       ))}
