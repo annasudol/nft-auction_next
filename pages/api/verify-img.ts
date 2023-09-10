@@ -19,11 +19,6 @@ export default withSession(async (
       contentType
     } = req.body as FileReq;
 
-    // if (!bytes || !fileName || !contentType) {
-    //   return res.status(422).send({ message: "Image data are missing" });
-    // }
-
-    // await addressCheckMiddleware(req, res);
 
     const buffer = Buffer.from(Object.values(bytes) as any);
     const formData = new FormData();
@@ -40,8 +35,8 @@ export default withSession(async (
       maxBodyLength: Infinity,
       headers: {
         "Content-Type": `multipart/form-data; boundary=${formData.getBoundary()}`,
-        pinata_api_key: pinataApiKey,
-        pinata_secret_api_key: pinataSecretApiKey
+        pinata_api_key: process.env.NEXT_PINIATA_API_KEY,
+        pinata_secret_api_key: process.env.NEXT_PINIATA_API_SECRET
       }
     });
 
