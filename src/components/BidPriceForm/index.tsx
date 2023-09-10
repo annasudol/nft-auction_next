@@ -13,8 +13,11 @@ const BidPriceForm: FC<{ defaultValue?: number }> = ({ defaultValue = 0 }) => {
 
   const handleChange = (evt: any) => {
     const newValue =
-     evt && evt.target.validity.valid && parseInt(evt.target.value.replace(/[^\d.-]+/g, ''));
-    newValue && handleChangeValue(newValue > defaultValue ? newValue : defaultValue);
+      evt &&
+      evt.target.validity.valid &&
+      parseInt(evt.target.value.replace(/[^\d.-]+/g, ''));
+    newValue &&
+      handleChangeValue(newValue > defaultValue ? newValue : defaultValue);
   };
   return (
     <form>
