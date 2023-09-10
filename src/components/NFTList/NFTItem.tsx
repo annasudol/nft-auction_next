@@ -24,7 +24,9 @@ const NFTItem: FC<{ info: NftInfo }> = ({ info }) => {
         <p className='text-xs text-gray-600'>
           {bids.length > 1 ? `${bids.length} bids` : `${bids.length} bid`}
         </p>
-        <BidPriceForm />
+        <BidPriceForm
+          defaultValue={bids.length ? bids[bids.length - 1].price : startPrice}
+        />
       </div>
     </div>
   );

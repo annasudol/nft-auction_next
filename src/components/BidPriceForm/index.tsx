@@ -1,47 +1,35 @@
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { FC, useState } from 'react';
 
 import Button from '@/components/Button';
 import CounterInput from '@/components/Input/CounterInput';
 
-const BidPriceForm: FC<{defaultValue?: string}> = ({defaultValue = '0'}) => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    getValue,
-    formState: { errors, isDirty },
-  } = useForm();
+const BidPriceForm: FC<{ defaultValue?: number }> = ({ defaultValue = 0 }) => {
+  const [price, setPrice] = useState<number>(defaultValue);
+
   const handleChangeValue = (value: number) => {
-    // console.log(getValue("bidPrice"), 'getValues("bidPrice")')
-    // setValue(
-    //   "bidPrice",
-    //   getValues("bidPrice") + value,
-    //   { shouldDirty: true, shouldTouch: true }
-    // );
+    const newValue = price + value;
+    setPrice(newValue > defaultValue ? newValue : defaultValue);
   };
 
+  const handleChange = (evt: any) => {
+    const newValue =
+     evt && evt.target.validity.valid && parseInt(evt.target.value.replace(/[^\d.-]+/g, ''));
+    newValue && handleChangeValue(newValue > defaultValue ? newValue : defaultValue);
+  };
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form>
       <CounterInput
         handleChange={handleChangeValue}
-        isValid={!!errors['bidPrice']}
+        value={price}
         placeholder='0'
         defaultValue={defaultValue}
-        disabled={!isDirty}
-        name="bidPrice"
-        register={register}
-        // {...register('bidPrice', {
-        //   valueAsNumber: true,
-        //   validate: (value) => value > 0,
-        // })}
-        // {...register('bidPrice')}
+        onInput={handleChange}
       />
       <Button
         variant='primary'
         className='px-8'
         type='submit'
-        disabled={!isDirty}
+        disabled={price <= defaultValue}
       >
         bid
       </Button>
