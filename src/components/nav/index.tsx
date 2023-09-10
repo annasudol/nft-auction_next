@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ConnectWallet } from '@thirdweb-dev/react';
-import ActiveLink from '@/components/links/ActiveLink';
 import Image from 'next/image';
+
 import { cn } from '@/lib/utils';
+
+import ActiveLink from '@/components/links/ActiveLink';
 
 const navigation = [
   { name: 'Marketplace', href: '/', current: true },
@@ -14,8 +14,6 @@ const navigation = [
 ];
 
 export default function Navbar() {
-  // const { account } = useAccount();
-  // const { network } = useNetwork();
 
   return (
     <Disclosure as='nav' className='fixed left-0 right-0 top-0 bg-gray-800'>
