@@ -1,10 +1,13 @@
 import { NftInfo } from 'types/nft';
 
+import NFTItem from '@/components/NFTList/NFTItem';
+
 const NFTList = () => {
   const list: NftInfo[] = [
     {
       meta: {
-        image: 'https://unsplash.com/photos/WUKy4uIDiaw',
+        image:
+          'https://images.unsplash.com/photo-1694213573428-063bcd9c5aee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80',
         title: 'Nft one',
       },
       tokenId: 1,
@@ -19,7 +22,7 @@ const NFTList = () => {
     {
       meta: {
         image:
-          'https://unsplash.com/photos/a-camper-trailer-parked-next-to-a-dragon-like-structure-u_xzx8uDCgw',
+          'https://images.unsplash.com/photo-1693892256614-6bceaa9e1b67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3516&q=80',
         title: 'Nft one',
       },
       tokenId: 2,
@@ -35,7 +38,7 @@ const NFTList = () => {
   return (
     <div className='my-4'>
       {list.map((nftItem) => (
-        <div key={nftItem.tokenId}>{nftItem.creator}</div>
+        <NFTItem info={nftItem} key={nftItem.tokenId} />
       ))}
     </div>
   );

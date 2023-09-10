@@ -1,43 +1,33 @@
+/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+import { FC } from 'react';
 import { NftInfo } from 'types/nft';
 
-const NFTList = () => {
-  const list: NftInfo[] = [
-    {
-      meta: {
-        image: 'https://unsplash.com/photos/WUKy4uIDiaw',
-        title: 'Nft one',
-      },
-      tokenId: 1,
-      startPrice: 10,
-      creator: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872',
-      bids: [
-        { address: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872', price: 11 },
-      ],
-      startDate: new Date('2/20/2023').toDateString(),
-      duration: 10,
-    },
-    {
-      meta: {
-        image:
-          'https://unsplash.com/photos/a-camper-trailer-parked-next-to-a-dragon-like-structure-u_xzx8uDCgw',
-        title: 'Nft one',
-      },
-      tokenId: 2,
-      startPrice: 1,
-      creator: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872',
-      bids: [
-        { address: '0x80dD5aD6B8775c4E31C999cA278Ef4D035717872', price: 2 },
-      ],
-      startDate: new Date('2/20/2023').toDateString(),
-      duration: 10,
-    },
-  ];
+import BidPriceForm from '@/components/BidPriceForm';
+
+const NFTItem: FC<{ info: NftInfo }> = ({ info }) => {
+  const { meta, tokenId, startPrice, creator, bids, startDate, duration } =
+    info;
+
   return (
-    <div className='my-4'>
-      {list.map((nftItem) => {
-        return <div key={nftItem.tokenId}>{nftItem.creator}</div>;
-      })}
+    <div className='my-2 flex gap-y-1 border-b border-gray-200 py-2'>
+      <Image src={meta.image} alt={meta.title} width={300} height={200} />
+      <div className='ml-4'>
+        <h4>{meta.title}</h4>
+        <div className='text-primary-900 my-2 flex items-center text-sm opacity-90'>
+          <span className='text-xs uppercase'>Start price:</span>{' '}
+          <div className='mx-1 flex w-8 justify-center rounded-sm bg-gray-200 px-2 font-medium text-blue-900'>
+            {startPrice}
+          </div>
+          ETH
+        </div>
+        <p className='text-xs text-gray-600'>
+          {bids.length > 1 ? `${bids.length} bids` : `${bids.length} bid`}
+        </p>
+        <BidPriceForm />
+      </div>
     </div>
   );
 };
-export default NFTList;
+
+export default NFTItem;
