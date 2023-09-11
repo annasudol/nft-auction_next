@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='grad h-screen w-screen'>
       <Seo />
-      <div className='flex h-screen w-screen flex-col justify-between'>
+      <div className='flex-col justify-between'>
         <Navbar />
         <main className='mx-auto mt-20 w-full'>{children}</main>
         <footer className='self-center text-gray-700'>
