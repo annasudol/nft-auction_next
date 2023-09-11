@@ -1,49 +1,15 @@
-// import * as React from 'react';
 
-// import Layout from '@/components/layout';
-
-// export default function HomePage() {
-//   return (
-//     <Layout>
-//       <p>create nft</p>
-//     </Layout>
-//   );
-// }
-/* eslint-disable @next/next/no-img-element */
-
-// import { useWeb3 } from '@providers/web3';
-// import { ethers } from 'ethers';
-// import { toast } from "react-toastify";
-// import { useNetwork } from '@hooks/web3';
 import { useAddress } from '@thirdweb-dev/react';
-// import { NftMeta, PinataRes } from '@_types/nft';
 import type { NextPage } from 'next';
 import { ChangeEvent, useState } from 'react';
 
 import ImageUpload from '@/components/ImageUpload';
 import Layout from '@/components/layout';
 
-const ALLOWED_FIELDS = ['name', 'description', 'image', 'attributes'];
 
 const NftCreate: NextPage = () => {
   const address = useAddress();
-  // const {ethereum, contract} = useWeb3();
-  // const {network} = useNetwork();
   const [imgSrc, setImgSrc] = useState('');
-  const [price, setPrice] = useState('');
-  const [hasURI, setHasURI] = useState(false);
-  const [nftMeta, setNftMeta] = useState<string>();
-
-  const getSignedData = async () => {
-    // const messageToSign = await axios.get("/api/verify");
-    // const accounts = await ethereum?.request({method: "eth_requestAccounts"}) as string[];
-    // const account = accounts[0];
-    // const signedData = await ethereum?.request({
-    //   method: "personal_sign",
-    //   params: [JSON.stringify(messageToSign.data), account, messageToSign.data.id]
-    // })
-    // return {signedData, account};
-  };
 
   const handleImage = async (file: File | null) => {
     if (!file) {
@@ -51,102 +17,19 @@ const NftCreate: NextPage = () => {
     }
     const buffer = await file.arrayBuffer();
     const bytes = new Uint8Array(buffer);
-    console.log(bytes, 'bytes');
-    // try {
-    //   const {signedData, account} = await getSignedData();
-    //   const promise = axios.post("/api/verify-image", {
-    //     address: account,
-    //     signature: signedData,
-    //     bytes,
-    //     contentType: file.type,
-    //     fileName: file.name.replace(/\.[^/.]+$/, "")
-    //   });
-
-    //   const res = await toast.promise(
-    //     promise, {
-    //       pending: "Uploading image",
-    //       success: "Image uploaded",
-    //       error: "Image upload error"
-    //     }
-    //   )
-
-    //   const data = res.data as PinataRes;
-
-    //   setNftMeta({
-    //     ...nftMeta,
-    //     image: `${process.env.NEXT_PUBLIC_PINATA_DOMAIN}/ipfs/${data.IpfsHash}`
-    //   });
-    // } catch(e: any) {
-    //   console.error(e.message);
-    // }
   };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    // setNftMeta({...nftMeta, [name]: value});
   };
 
   const handleAttributeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // const attributeIdx = nftMeta.attributes.findIndex(attr => attr.trait_type === name);
-
-    // nftMeta.attributes[attributeIdx].value = value;
-    // setNftMeta({
-    //   ...nftMeta,
-    //   attributes: nftMeta.attributes
-    // })
   };
 
-  const uploadMetadata = async () => {
-    // try {
-    //   const {signedData, account} = await getSignedData();
-    //   const promise = axios.post("/api/verify", {
-    //     address: account,
-    //     signature: signedData,
-    //     nft: nftMeta
-    //   })
-    //   const res = await toast.promise(
-    //     promise, {
-    //       pending: "Uploading metadata",
-    //       success: "Metadata uploaded",
-    //       error: "Metadata upload error"
-    //     }
-    //   )
-    //   const data = res.data as PinataRes;
-    //   setNftURI(`${process.env.NEXT_PUBLIC_PINATA_DOMAIN}/ipfs/${data.IpfsHash}`);
-    // } catch (e: any) {
-    //   console.error(e.message);
-    // }
-  };
-
-  const createNft = async () => {
-    // try {
-    //   const nftRes = await axios.get(nftURI);
-    //   const content = nftRes.data;
-    //   Object.keys(content).forEach(key => {
-    //     if (!ALLOWED_FIELDS.includes(key)) {
-    //       throw new Error("Invalid Json structure");
-    //     }
-    //   })
-    //   const tx = await contract?.mintToken(
-    //     nftURI,
-    //     ethers.utils.parseEther(price), {
-    //       value: ethers.utils.parseEther(0.025.toString())
-    //     }
-    //   );
-    //   await toast.promise(
-    //     tx!.wait(), {
-    //       pending: "Minting Nft Token",
-    //       success: "Nft has ben created",
-    //       error: "Minting error"
-    //     }
-    //   );
-    // } catch(e: any) {
-    //   console.error(e.message);
-    // }
-  };
+  const uploadMetadata = async () => {};
 
   if (!address) {
     return (
@@ -158,11 +41,13 @@ const NftCreate: NextPage = () => {
 
   return (
     <Layout>
-      <ImageUpload
+      <div className='mx-auto max-w-2xl px-2 sm:px-12 lg:px-12'>
+       <ImageUpload
         accept='image/png, image/gif, image/jpeg, .svg, image/png'
         imgSrc={imgSrc}
         onChange={handleImage}
       />
+     </div>
     </Layout>
   );
 };
