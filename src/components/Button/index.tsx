@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ImSpinner2 } from 'react-icons/im';
+import { FaSpinner } from 'react-icons/fa';
 
 import { cn } from '@/lib/utils';
 
@@ -82,7 +82,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               }
             )}
           >
-            <ImSpinner2 className='animate-spin' />
+            <FaSpinner className='animate-spin' />
           </div>
         )}
         {children}
